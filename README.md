@@ -1,3 +1,3 @@
 # Sosial-Media
 *Not Finished* \newline
-For learning perposes
+For learning purposes
