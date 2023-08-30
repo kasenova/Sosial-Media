@@ -1,3 +1,3 @@
 # Sosial-Media
-*Not Finished*
+*Not Finished* \\
 For learning perposes
