@@ -1,0 +1,46 @@
+@page
+@model MyProfileModel
+<h1>@HttpContext.Session.GetString("Username"):</h1>
+
+<form method="post" class="comment-form">
+    <div>
+        Full Name:
+        <div class="form-group">
+            <textarea name="Name" id="Name" rows="1" class="form-control" placeholder="@Model.user.Name"></textarea>
+        </div>
+    </div>
+    <div>
+        Apartment:
+        <div class="form-group">
+            <textarea name="Apartment" id="Apartment" rows="1" class="form-control" placeholder="@Model.user.Apartment"></textarea>
+        </div>
+    </div>
+    <div>
+        Zip Code:
+        <div class="form-group">
+            <textarea name="Zipcode" id="Zipcode" rows="1" class="form-control" placeholder="@Model.user.Zipcode"></textarea>
+        </div>
+    </div>
+
+    <input type="submit" value="Change"></input>
+</form>
+
+<br>
+
+<h4>Your Posts</h4>
+<div class = "post-center">
+    @foreach (var post in @Model.AllPosts)
+    {
+        <div class="post-container">
+            <a href="Post/OnePost?postId=@post.Id">
+            <p class="post-title">@post.Title</p>
+            <p class="post-content">@post.Content</p>
+            <p class="post-info">@post.Username</p>
+            <p class="post-info">@post.Date</p>
+            </a>
+        </div>
+    }
+</div>
+<div class="text-center">
+    <p>Make a new post: <a class="btn btn-primary" asp-page="/Post/newPost"></a></p>
+</div>

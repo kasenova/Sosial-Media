@@ -1,0 +1,27 @@
+@page
+@model SearchModel
+
+<h1>Search Results</h1>
+@foreach(var result in Model.SearchResults)
+{
+    @if(result.Type=="Post")
+    {
+    <div class="post-container">
+        <a href="/Post/OnePost?postId=@result.Id">
+        <p>@result.Id<p>
+        <p>@result.Type</p>
+        <p>@result.Title</p>
+        </a>
+    </div>
+    }
+    else
+    {
+    <div class="post-container">
+        <a href="/User/Profile/OneProfile?userName=@result.Title">
+        <p>@result.Id<p>
+        <p>@result.Type</p>
+        <p>@result.Title</p>
+        </a>
+    </div>
+    }
+}

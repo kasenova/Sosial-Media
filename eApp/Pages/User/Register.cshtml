@@ -1,0 +1,38 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Register a user:</p>
+
+<form method="post">
+    <div>
+        Username:
+        <input asp-for="Username" class="form-control">
+    </div>
+    <div>
+        Password:
+        <input asp-for="Password" class="form-control">
+    </div>
+    <div>
+        Name:
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div>
+        Apartment:
+        <input asp-for="Apartment" class="form-control">
+    </div>
+    <div>
+        Zip Code:
+        <input asp-for="Zipcode" class="form-control">
+    </div>
+
+    <input type="submit"></input>
+
+    @if(@Model.Error != null)
+    {
+        <p> @Model.Error </p>
+    }
+</form>

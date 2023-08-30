@@ -1,0 +1,17 @@
+@page
+@model NewPostModel
+@{
+    ViewData["Title"] = "Make a new post";
+}
+
+<form method="post" class="comment-form">
+    <div>
+        Title:
+        <textarea id="Title" name="Title" class="form-control" rows="1" required></textarea>
+    </div>
+    <div>
+        Content:
+        <textarea id="Content" name="Content" class="form-control" rows="4" required></textarea>
+    </div>
+    <input type="submit"></input>
+</form>

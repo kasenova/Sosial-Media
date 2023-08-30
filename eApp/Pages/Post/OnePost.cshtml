@@ -1,0 +1,63 @@
+@page
+@model OnePostModel
+@{
+    ViewData["Title"] = "Post details";
+}
+<h1>Post Details</h1>
+<div class="post-center">
+    <h3 class="post-title">@Model.Post.Title</h3>
+    <p class="post-content">@Model.Post.Content</p>
+    <p class="post-info">Posted by: <a href="/User/Profile/OneProfile?userName=@Model.Post.Username">@Model.Post.Username</a></p>
+    <p class ="post-info">Posted on: @Model.Post.Date</p>
+</div>
+
+@if(@HttpContext.Session.GetString("Username")==Model.Post.Username|| @HttpContext.Session.GetString("Username")=="admin")
+{ 
+    <div>
+        <form method="post" asp-page-handler="DeletePost" asp-route-postId="@Model.Post.Id">
+            <button type="submit"><i class="bi bi-trash"></i>Delete Post</button>
+        </form>
+    </div>
+}
+<br>
+
+<div class = "text-center comment-container">
+    <h4>Comments:</h4>
+    @foreach (var comment in Model.Post.Comments)
+    {
+        <div class="comment">
+            <p>@comment.Content</p>
+                <p class="username">Posted by: 
+                    <a href="/User/Profile/OneProfile?userName=@comment.Username"> @comment.Username</a></p>
+            <p class="timestamp">Posted on: @comment.Date</p>
+
+        @if(@HttpContext.Session.GetString("Username")==comment.Username|| @HttpContext.Session.GetString("Username")=="admin")
+        {     
+            <form method="post" asp-page-handler="DeleteComment" asp-route-commentId="@comment.Id.ToString()">
+                <input type="hidden" name="postId" value="@Model.PostId"/>
+                <button type="submit"><i class="bi bi-trash"></i>Delete Comment</button>
+            </form>
+        }
+        </div>
+    }
+</div>
+
+<br>
+
+<div class = "text-center comment-container">
+    <h4>Add a Comment</h4>
+    @if (HttpContext.Session.GetString("Username")!=null)
+    {
+        <form method="post" class="comment-form">
+            <input type="hidden" name="postId" value="@Model.PostId"/>
+            <div class="form-group">
+                <textarea id="commentContent" name="commentContent" class="form-control" rows="3" required></textarea>
+            </div>
+            <input type="submit" value="Comment">
+        </form>
+    }
+    else
+    {
+        <p>Login to comment</p>
+    }
+</div>

@@ -1,0 +1,10 @@
+@page
+@model OneProfileModel
+<h1>User Details</h1>
+<div class="post-center">
+    <input type="hidden" name="userName" value="@Model.UserName"/>
+    <h3>@Model.User.Username</h3>
+    <p>Fullname: @Model.User.Name</p>
+    <p>Apartment: @Model.User.Apartment</p>
+    <p>Zipcode: @Model.User.Zipcode</p>
+</div>

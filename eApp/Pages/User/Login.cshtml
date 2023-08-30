@@ -1,0 +1,28 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Enter your user details:</p>
+
+<form method="post">
+    <div>
+        Username:
+        <input asp-for="Username" class="form-control">
+    </div>
+    <div>
+        Password:
+        <input type="password" asp-for="Password" class="form-control">
+    </div>
+    <input type="submit" value="Login">
+</form>
+@if (@Model.Error!= null)
+{
+    <p>@Model.Error</p>
+}
+@if(@HttpContext.Session.GetString("Username")!= null)
+{
+    <p> You are logged in!</p>
+}

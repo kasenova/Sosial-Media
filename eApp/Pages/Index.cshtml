@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>The time on the servier is @DateTime.Now</p>
+</div>
+    <div class = "post-center">
+        <p><b>The Post Feed</b></p>
+            @foreach (var post in @Model.Posts)
+            {
+                <div class="post-container">
+                    <a href="Post/OnePost?postId=@post.Id">
+                    <p class="post-title">@post.Title</p>
+                    <p class="post-content">@post.Content</p>
+                    <p class="post-info">@post.Username</p>
+                    <p class="post-info">@post.Date</p>
+                    </a>
+                </div>
+            }
+    </div>
+    <div class="text-center">
+        <p>Make your own post: <a class="btn btn-primary" asp-page="/Post/newPost"></a></p>
+    </div>
