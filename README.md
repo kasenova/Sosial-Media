@@ -1,3 +1,3 @@
 # Sosial-Media
-*Not Finished* \newline
+*Not Finished* \
 For learning purposes
